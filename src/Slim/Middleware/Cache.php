@@ -49,6 +49,10 @@ Class Cache extends \Slim\Middleware
                 if(preg_match("/results/", $rsp->body())){
                     $ttl = null;    
                 }
+            }else{
+                if(preg_match("/results/", $rsp->body())){
+                    $ttl = 86400;    
+                }
             } 
             $this->save($key, $rsp["Content-Type"], $rsp->body(),$ttl);
         }
